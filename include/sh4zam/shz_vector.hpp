@@ -336,49 +336,49 @@ struct vecN: C {
 
 //! Overloaded addition operator, adding two vectors together and returning the result.
 template<typename CRTP, typename C, size_t R>
-SHZ_FORCE_INLINE CRTP operator+(vecN<CRTP, C, R> lhs, vecN<CRTP, C, R> rhs) noexcept {
+SHZ_FORCE_INLINE CRTP operator+(const vecN<CRTP, C, R>& lhs, const vecN<CRTP, C, R>& rhs) noexcept {
     return shz_vec_add(lhs, rhs);
 }
 
 //! Overloaded subtraction operator, subtracting one vector from another, returning the result.
 template<typename CRTP, typename C, size_t R>
-SHZ_FORCE_INLINE CRTP operator-(vecN<CRTP, C, R> lhs, vecN<CRTP, C, R> rhs) noexcept {
+SHZ_FORCE_INLINE CRTP operator-(const vecN<CRTP, C, R>& lhs, const vecN<CRTP, C, R>& rhs) noexcept {
     return shz_vec_sub(lhs, rhs);
 }
 
 //! Overloaded multiplication operator, performing element-wise multiplication between two vectors, returning the resultant vector.
 template<typename CRTP, typename C, size_t R>
-SHZ_FORCE_INLINE CRTP operator*(vecN<CRTP, C, R> lhs, vecN<CRTP, C, R> rhs) noexcept {
+SHZ_FORCE_INLINE CRTP operator*(const vecN<CRTP, C, R>& lhs, const vecN<CRTP, C, R>& rhs) noexcept {
     return shz_vec_mul(lhs, rhs);
 }
 
 //! Overloaded division operator, returning the resulting vector from component-wise dividing the elements of \p lhs by \p rhs.
 template<typename CRTP, typename C, size_t R>
-SHZ_FORCE_INLINE CRTP operator/(vecN<CRTP, C, R> lhs, vecN<CRTP, C, R> rhs) noexcept {
+SHZ_FORCE_INLINE CRTP operator/(const vecN<CRTP, C, R>& lhs, const vecN<CRTP, C, R>& rhs) noexcept {
     return shz_vec_div(lhs, rhs);
 }
 
 //! Overloaded multiplication operator for scaling a vector by a scalar and returning the resulting vector.
 template<typename CRTP, typename C, size_t R>
-SHZ_FORCE_INLINE CRTP operator*(vecN<CRTP, C, R> lhs, float rhs) noexcept {
+SHZ_FORCE_INLINE CRTP operator*(const vecN<CRTP, C, R>& lhs, float rhs) noexcept {
     return shz_vec_scale(lhs, rhs);
 }
 
 //! Reverse overloaded multiplication operator for scaling a vector by a scalar and returning the resulting vector.
 template<typename CRTP, typename C, size_t R>
-SHZ_FORCE_INLINE CRTP operator*(float lhs, vecN<CRTP, C, R> rhs) noexcept {
+SHZ_FORCE_INLINE CRTP operator*(float lhs, const vecN<CRTP, C, R>& rhs) noexcept {
     return shz_vec_scale(rhs, lhs);
 }
 
 //! Overloaded division operator for component-wise dividing each element of the given vector by the given scalar.
 template<typename CRTP, typename C, size_t R>
-SHZ_FORCE_INLINE CRTP operator/(vecN<CRTP, C, R> lhs, float rhs) noexcept {
+SHZ_FORCE_INLINE CRTP operator/(const vecN<CRTP, C, R>& lhs, float rhs) noexcept {
     return shz_vec_scale(lhs, shz::invf(rhs));
 }
 
 //! Reverse overloaded division operator for component-wise dividing a vector whose elements have all been initialized to the scalar by the given vector.
 template<typename CRTP, typename C, size_t R>
-SHZ_FORCE_INLINE CRTP operator/(float lhs, vecN<CRTP, C, R> rhs) noexcept {
+SHZ_FORCE_INLINE CRTP operator/(float lhs, const vecN<CRTP, C, R>& rhs) noexcept {
     return shz_vec_div(CRTP(lhs), rhs);
 }
 
